@@ -1,0 +1,98 @@
+﻿<Page x:Class="KartotekaKontrahentowWpf.AdvancedView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      xmlns:viewmodel="clr-namespace:KartotekaKontrahentowWpf.ViewModels"
+      xmlns:templateselectors="clr-namespace:KartotekaKontrahentowWpf.TemplateSelectors"
+      d:DesignHeight="350" d:DesignWidth="525"
+	Title="AdvancedView">
+    <Page.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Page.DataContext>
+    <Page.Resources>
+        <DataTemplate x:Key="BusinessClientDataTemplate">
+            <StackPanel Orientation="Horizontal" Background="LightBlue">
+                <TextBlock Margin="5" Text="{Binding Name}"/>
+                <TextBlock Margin="5" Text="{Binding City}"/>
+                <Button Content="Edit client" Margin="5"
+                        Command="{Binding Path=DataContext.EditClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+                <Button Content="Delete client" Margin="5"
+                        Command="{Binding Path=DataContext.DeleteClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+            </StackPanel>
+        </DataTemplate>
+        <!--<DataTemplate x:Key="IndividualClientDataTemplate">
+            <StackPanel Orientation="Horizontal" Background="LightGray">
+                <TextBlock Margin="5" Text="{Binding Name}"/>
+                <TextBlock Margin="5" Text="{Binding City}"/>
+                <Button Content="Edit client" Margin="5"
+                        Command="{Binding Path=DataContext.EditClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+                <Button Content="Delete client" Margin="5"
+                        Command="{Binding Path=DataContext.DeleteClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+            </StackPanel>
+        </DataTemplate>-->
+        <templateselectors:ClientsListTemplateSelector x:Key="ClientsListTemplateSelector"/>
+    </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*" MaxWidth="50" MinWidth="25"/>
+            <ColumnDefinition Width="9.9*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Orientation="Vertical">
+            <Button Content="+" Command="{Binding OpenAddClientPanelCommand, Mode=TwoWay}"/>
+
+            <Button Content="L"/>
+        </StackPanel>
+
+        <ListView  Grid.Row="0" Grid.Column="1" Margin="5"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                   ItemsSource="{Binding ClientsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
+                   ItemTemplateSelector="{StaticResource ClientsListTemplateSelector}"/>
+
+        <Grid Grid.Column="1" Visibility="{Binding EditionPanelVisibility, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Aquamarine">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="Client name"/>
+                <TextBox MinWidth="100"
+                     VerticalAlignment="Center" HorizontalAlignment="Center"
+                     Text="{Binding ClientName, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="Client city"/>
+                <TextBox MinWidth="100"
+                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                  Text="{Binding ClientCity, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" 
+                    Grid.Row="2" Grid.Column="0" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Business client" Margin="5"/>
+                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" 
+                      IsChecked="{Binding IsBussinessClientChecked, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <Button Grid.Row="3" Grid.Column="0" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Content="Save"
+                    Command="{Binding SaveEditedClientCommand, Mode=TwoWay}"/>
+        </Grid>
+    </Grid>
+</Page>

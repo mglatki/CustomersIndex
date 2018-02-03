@@ -1,0 +1,179 @@
+﻿<Window x:Class="KartotekaKontrahentowWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:utilities="clr-namespace:KartotekaKontrahentowWpf.Utilities"
+        xmlns:views="clr-namespace:KartotekaKontrahentowWpf"
+        xmlns:viewmodel="clr-namespace:KartotekaKontrahentowWpf.ViewModels"
+        xmlns:templateselectors="clr-namespace:KartotekaKontrahentowWpf.TemplateSelectors"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <viewmodel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="BusinessClientDataTemplate">
+            <StackPanel Orientation="Horizontal" Background="LightBlue" HorizontalAlignment="Stretch">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding City}"/>
+                <Button Content="Edit client" Margin="5"
+                        Command="{Binding ElementName=ClientsListView, Path=DataContext.EditClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+                <Button Content="Delete client" Margin="5"
+                        Command="{Binding ElementName=ClientsListView, Path=DataContext.DeleteClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="IndividualClientDataTemplate">
+            <StackPanel Orientation="Horizontal" Background="LightGray" HorizontalAlignment="Stretch">
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding City}"/>
+                <Button Content="Edit client" Margin="5"
+                        Command="{Binding ElementName=ClientsListView, Path=DataContext.EditClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+                <Button Content="Delete client" Margin="5"
+                        Command="{Binding ElementName=ClientsListView, Path=DataContext.DeleteClientCommand, Mode=TwoWay}"
+                        CommandParameter="{Binding }"/>
+            </StackPanel>
+        </DataTemplate>
+        <templateselectors:ClientsListTemplateSelector x:Key="ClientsListTemplateSelector"/>
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <utilities:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="20,0" />
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*" MaxWidth="50" MinWidth="25"/>
+            <ColumnDefinition Width="9.9*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <Button Content="+" Command="{Binding OpenAddClientPanelCommand, Mode=TwoWay}"/>
+
+            <Button Content="L" Command="{Binding ShowListCommand, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <ListView  Grid.Row="0" Grid.Column="1" Margin="5" Name="ClientsListView"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                   ItemsSource="{Binding ClientsList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                   ItemTemplateSelector="{StaticResource ClientsListTemplateSelector}"/>
+                   <!--SelectedItem="{Binding SelectedClient, Mode=TwoWay}"-->
+
+        <!--<Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="This prompt dissappears as you type..." Foreground="{StaticResource brushWatermarkForeground}" 
+                       Visibility="{Binding ElementName=txtUserEntry, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="txtUserEntry" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+            <Grid Grid.Row="1" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Margin="5,2" Text="This dissappears as the control gets focus..." Foreground="{StaticResource brushWatermarkForeground}" >
+                    <TextBlock.Visibility>
+                        <MultiBinding Converter="{StaticResource TextInputToVisibilityConverter}">
+                            <Binding ElementName="txtUserEntry2" Path="Text.IsEmpty" />
+                            <Binding ElementName="txtUserEntry2" Path="IsFocused" />
+                        </MultiBinding>
+                    </TextBlock.Visibility>
+                </TextBlock>
+                <TextBox Name="txtUserEntry2" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" />
+            </Grid>
+        </Grid>-->
+
+        <Grid Grid.Column="1" 
+              Visibility="{Binding EditionPanelVisibility, Mode=TwoWay}" 
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="0.25*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.ColumnSpan="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition MinWidth="100" Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.RowSpan="2" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" VerticalAlignment="Center">
+                        <TextBlock Margin="5,2" Text="Enter clients name" Foreground="{StaticResource brushWatermarkForeground}" 
+                       Visibility="{Binding ElementName=txtClientsName, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <TextBox Name="txtClientsName" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Text="{Binding ClientName, Mode=TwoWay}"/>
+                    </Grid>
+                    
+                    <TextBlock Text="Business client" Margin="5" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1"
+                              IsChecked="{Binding IsBussinessClientChecked, Mode=TwoWay}"/>
+                </Grid>
+            </Grid>
+            
+            <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" VerticalAlignment="Center">
+                <TextBlock Margin="5,2" Text="Enter clients country" Foreground="{StaticResource brushWatermarkForeground}" 
+                   Visibility="{Binding ElementName=txtClientsCountry, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="txtClientsCountry" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Text="{Binding ClientCountry, Mode=TwoWay}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" VerticalAlignment="Center">
+                <TextBlock Margin="5,2" Text="Enter clients city" Foreground="{StaticResource brushWatermarkForeground}" 
+                   Visibility="{Binding ElementName=txtClientsCity, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="txtClientsCity" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Text="{Binding ClientCity, Mode=TwoWay}"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" VerticalAlignment="Center">
+                <TextBlock Margin="5,2" Text="Enter clients street" Foreground="{StaticResource brushWatermarkForeground}" 
+                   Visibility="{Binding ElementName=txtClientsStreet, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="txtClientsStreet" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Text="{Binding ClientStreet, Mode=TwoWay}"/>
+            </Grid>
+
+            <Grid Grid.Row="2" Grid.Column="1" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" VerticalAlignment="Center">
+                <TextBlock Margin="5,2" Text="Enter clients street number" Foreground="{StaticResource brushWatermarkForeground}" 
+                   Visibility="{Binding ElementName=txtClientsStreetNumber, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="txtClientsStreetNumber" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Text="{Binding ClientStreetNumber, Mode=TwoWay}"/>
+            </Grid>
+
+            <!--<StackPanel Orientation="Horizontal" 
+                    Grid.Row="2" Grid.Column="0" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Business client" Margin="5"/>
+                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" 
+                      IsChecked="{Binding IsBussinessClientChecked, Mode=TwoWay}"/>
+            </StackPanel>-->
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="3" Grid.Column="0" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Content="Save"
+                    Command="{Binding SaveEditedClientCommand, Mode=TwoWay}"/>
+
+                <Button Grid.Row="3" Grid.Column="1" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Content="Cancel"
+                    Command="{Binding CancelEditedClientCommand, Mode=TwoWay}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
