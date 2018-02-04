@@ -1,11 +1,11 @@
-﻿using KartotekaKontrahentowWpf.Interfaces;
+﻿using CustomersIndex.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KartotekaKontrahentowWpf.Models
+namespace CustomersIndex.Models
 {
     public class BusinessClient : IClient
     {
@@ -102,7 +102,33 @@ namespace KartotekaKontrahentowWpf.Models
             }
         }
 
-        public BusinessClient(int id, string name, string country, string city, string street, string streetNumber)
+        private string _phone;        
+        public string Phone
+        {
+            get
+            {
+                return _phone;
+            }
+            set
+            {
+                _phone = value;
+            }
+        }
+
+        private string _email;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+            }
+        }
+
+        public BusinessClient(int id, string name, string country, string city, string street, string streetNumber, string phone, string email)
         {
             _id = id;
             _name = name;
@@ -110,7 +136,11 @@ namespace KartotekaKontrahentowWpf.Models
             _city = city;
             _street = street;
             _streetNumber = streetNumber;
+            _phone = phone;
+            _email = email;
             _isBusinessClient = false;
         }
+
+
     }
 }

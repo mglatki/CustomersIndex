@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Data;
-namespace KartotekaKontrahentowWpf.Utilities
+namespace CustomersIndex.Utilities
 {
     public class TextInputToVisibilityConverter : IMultiValueConverter
     {

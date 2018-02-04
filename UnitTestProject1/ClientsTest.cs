@@ -1,4 +1,4 @@
-﻿using KartotekaKontrahentowWpf.Models;
+﻿using CustomersIndex.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;

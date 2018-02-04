@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KartotekaKontrahentowWpf.Interfaces
+namespace CustomersIndex.Interfaces
 {
     public interface IClient
     {
@@ -14,6 +14,8 @@ namespace KartotekaKontrahentowWpf.Interfaces
         string City { get; set; }
         string Street { get; set; }
         string StreetNumber { get; set; }
+        string Phone { get; set; }
+        string Email { get; set; }
         bool IsBusinessClient { get; set; }
     }
 }

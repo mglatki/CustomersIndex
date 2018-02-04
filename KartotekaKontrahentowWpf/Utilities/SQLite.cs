@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KartotekaKontrahentowWpf.Utilities
+namespace CustomersIndex.Utilities
 {
     public class SQLite
     {

@@ -1,6 +1,6 @@
-﻿using KartotekaKontrahentowWpf.Interfaces;
-using KartotekaKontrahentowWpf.Models;
-using KartotekaKontrahentowWpf.Utilities;
+﻿using CustomersIndex.Interfaces;
+using CustomersIndex.Models;
+using CustomersIndex.Utilities;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
-namespace KartotekaKontrahentowWpf.ViewModels
+namespace CustomersIndex.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
@@ -73,6 +73,22 @@ namespace KartotekaKontrahentowWpf.ViewModels
             set { SetProperty(ref _clientStreetNumber, value); }
         }
 
+        private string _clientsPhoneNumber;
+
+        public string ClientsPhoneNumber
+        {
+            get { return _clientsPhoneNumber; }
+            set { SetProperty(ref _clientsPhoneNumber, value); }
+        }
+
+        private string _clientsEmailAdres;
+
+        public string ClientsEmailAdres
+        {
+            get { return _clientsEmailAdres; }
+            set { SetProperty(ref _clientsEmailAdres, value); }
+        }
+
         private bool _isBussinessClientChecked;
 
         public bool IsBussinessClientChecked
@@ -97,6 +113,14 @@ namespace KartotekaKontrahentowWpf.ViewModels
             set { _editedClient = value; }
         }
 
+        private string _selectedPanel;
+
+        public string SelectedPanel
+        {
+            get { return _selectedPanel; }
+            set { SetProperty(ref _selectedPanel, value); }
+        }
+
         #endregion
 
         #region Commands
@@ -112,13 +136,6 @@ namespace KartotekaKontrahentowWpf.ViewModels
         private void OpenAddClientPanel()
         {
             EditionPanelVisibility = Visibility.Visible;
-
-            //ClientName = "";
-            //ClientCity = "";
-            //ClientCountry = "";
-            //ClientStreet = "";
-            //ClientStreetNumber = "";
-            //IsBussinessClientChecked = false;
         }
 
         private void EditClient(IClient client)
@@ -160,18 +177,16 @@ namespace KartotekaKontrahentowWpf.ViewModels
 
         private void CancelClientEdition()
         {
-            ClientName = "";
-            ClientCity = "";
-            ClientCountry = "";
-            ClientStreet = "";
-            ClientStreetNumber = "";
-            IsBussinessClientChecked = false;
-            EditionPanelVisibility = Visibility.Hidden;
+            CleanClientEditionPanelInputs();
+
+            ShowList();
         }
 
         private void ShowList()
         {
             EditionPanelVisibility = Visibility.Hidden;
+
+            SelectedPanel = "L";
         }
 
         private async Task ModifyClient()
@@ -182,13 +197,9 @@ namespace KartotekaKontrahentowWpf.ViewModels
 
             ClientsList = await ClientsSQL.GetClientsAsync();
 
-            ClientName = "";
-            ClientCity = "";
-            ClientCountry = "";
-            ClientStreet = "";
-            ClientStreetNumber = "";
-            IsBussinessClientChecked = false;
-            EditionPanelVisibility = Visibility.Hidden;
+            CleanClientEditionPanelInputs();
+
+            ShowList();
         }
 
         private async Task SaveNewClient()
@@ -202,13 +213,19 @@ namespace KartotekaKontrahentowWpf.ViewModels
 
             ClientsList = await ClientsSQL.GetClientsAsync();
 
+            CleanClientEditionPanelInputs();
+
+            ShowList();
+        }
+
+        private void CleanClientEditionPanelInputs()
+        {
             ClientName = "";
             ClientCity = "";
             ClientCountry = "";
             ClientStreet = "";
             ClientStreetNumber = "";
             IsBussinessClientChecked = false;
-            EditionPanelVisibility = Visibility.Hidden;
         }
         #endregion
 
@@ -223,6 +240,7 @@ namespace KartotekaKontrahentowWpf.ViewModels
 
             EditionPanelVisibility = Visibility.Hidden;
             IsEditMode = false;
+            SelectedPanel = "L";
 
             LoadData();
         }

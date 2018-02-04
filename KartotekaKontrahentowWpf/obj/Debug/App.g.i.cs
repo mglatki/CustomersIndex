@@ -31,7 +31,7 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 
 
-namespace KartotekaKontrahentowWpf {
+namespace CustomersIndex {
     
     
     /// <summary>
@@ -60,7 +60,7 @@ namespace KartotekaKontrahentowWpf {
         [System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
         public static void Main() {
-            KartotekaKontrahentowWpf.App app = new KartotekaKontrahentowWpf.App();
+            CustomersIndex.App app = new CustomersIndex.App();
             app.InitializeComponent();
             app.Run();
         }

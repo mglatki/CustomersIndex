@@ -31,3 +31,36 @@ C:\Users\Michał\Documents\Visual Studio 2013\Projects\KartotekaKontrahentowWpf\
 C:\Users\Michał\Documents\Visual Studio 2013\Projects\KartotekaKontrahentowWpf\KartotekaKontrahentowWpf\obj\Debug\KartotekaKontrahentowWpf.exe
 C:\Users\Michał\Documents\Visual Studio 2013\Projects\KartotekaKontrahentowWpf\KartotekaKontrahentowWpf\obj\Debug\KartotekaKontrahentowWpf.pdb
 C:\Users\Michał\Documents\Visual Studio 2013\Projects\KartotekaKontrahentowWpf\KartotekaKontrahentowWpf\obj\Debug\KartotekaKontrahentowWpf.csprojResolveAssemblyReference.cache
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\CustomersIndex.exe.config
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\CustomersIndex.exe
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\CustomersIndex.pdb
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\EntityFramework.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\EntityFramework.SqlServer.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Prism.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Prism.Wpf.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\System.Data.SQLite.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\System.Windows.Interactivity.dll
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\EntityFramework.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\EntityFramework.SqlServer.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Microsoft.Practices.ServiceLocation.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Prism.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\Prism.Wpf.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\bin\Debug\System.Data.SQLite.xml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\KartotekaKontrahentowWpf.csprojResolveAssemblyReference.cache
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\AdvancedView.g.cs
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\MainWindow.g.cs
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\App.g.cs
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex_MarkupCompile.cache
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex_MarkupCompile.lref
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\AdvancedView.baml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\MainWindow.baml
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex.g.resources
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex.Properties.Resources.resources
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\KartotekaKontrahentowWpf.csproj.GenerateResource.Cache
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex.exe
+C:\Repozytoria\CustomersIndex\KartotekaKontrahentowWpf\obj\Debug\CustomersIndex.pdb
