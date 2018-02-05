@@ -141,11 +141,15 @@ namespace CustomersIndex.ViewModels
         private void EditClient(IClient client)
         {
             EditionPanelVisibility = Visibility.Visible;
+            SelectedPanel = "+";
+
             ClientCity = client.City;
             ClientName = client.Name;
             ClientCountry = client.Country;
             ClientStreet = client.Street;
             ClientStreetNumber = client.StreetNumber;
+            ClientsPhoneNumber = client.Phone;
+            ClientsEmailAdres = client.Email;
             EditedClient = client;
             IsBussinessClientChecked = client.IsBusinessClient;
             IsEditMode = true;
@@ -193,7 +197,7 @@ namespace CustomersIndex.ViewModels
         {
             byte b = Convert.ToByte(IsBussinessClientChecked);
 
-            await ClientsSQL.UpdateClientAsync(EditedClient.Id, ClientName, ClientCountry, ClientCity, ClientStreet, ClientStreetNumber, Convert.ToByte(IsBussinessClientChecked)).ConfigureAwait(false);
+            await ClientsSQL.UpdateClientAsync(EditedClient.Id, ClientName, ClientCountry, ClientCity, ClientStreet, ClientStreetNumber, ClientsPhoneNumber, ClientsEmailAdres, Convert.ToByte(IsBussinessClientChecked)).ConfigureAwait(false);
 
             ClientsList = await ClientsSQL.GetClientsAsync();
 
@@ -209,7 +213,7 @@ namespace CustomersIndex.ViewModels
                 ClientsList = new ObservableCollection<IClient>();
             }
 
-            await ClientsSQL.AddClientAsync(ClientName, ClientCountry, ClientCity, ClientStreet, ClientStreetNumber, Convert.ToByte(IsBussinessClientChecked)).ConfigureAwait(false);
+            await ClientsSQL.AddClientAsync(ClientName, ClientCountry, ClientCity, ClientStreet, ClientStreetNumber, ClientsPhoneNumber, ClientsEmailAdres, Convert.ToByte(IsBussinessClientChecked)).ConfigureAwait(false);
 
             ClientsList = await ClientsSQL.GetClientsAsync();
 

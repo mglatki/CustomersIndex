@@ -90,7 +90,7 @@ namespace CustomersIndex.Utilities
         public static async Task AddClientAsync(string name, string adr_country, string adr_city, string adr_street, string adr_str_numb, string cont_phone, string cont_email, byte buss_client)
         {
             string txtSQLQuery = "INSERT INTO clients (name, adr_country, adr_city, adr_street, adr_str_numb, cont_phone, cont_email, buss_client) VALUES ('" +
-                name + "','" + adr_country + "','" + adr_city + "','" + adr_street + "','" + adr_str_numb + "','" + buss_client + "')";
+                name + "','" + adr_country + "','" + adr_city + "','" + adr_street + "','" + adr_str_numb + "','" + cont_phone + "','" + cont_email + "','" + buss_client + "')";
             try
             {
                 await ExecuteQuery(txtSQLQuery);

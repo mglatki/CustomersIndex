@@ -101,7 +101,7 @@
                             <!--Text element-->
                             <Border Width="30" Height="60" CornerRadius="3" BorderBrush="#FFE2E2E2" BorderThickness="1">
                                 <Grid>
-                                    <Grid Background="#FFCDCDCD" Name="RadioMark"/>
+                                    <Grid Background="LightGray" Name="RadioMark"/>
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Grid>
                             </Border>
@@ -110,7 +110,7 @@
                         <!--If item is checked, trigger the visibility of the mark-->
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="true">
-                                <Setter TargetName="RadioMark" Property="Background" Value="Gold"/>
+                                <Setter TargetName="RadioMark" Property="Background" Value="White"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -125,13 +125,17 @@
             <ColumnDefinition Width="9.9*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Background="LightGray">
             <!--<Button Content="+" Command="{Binding OpenAddClientPanelCommand, Mode=TwoWay}"/>
 
             <Button Content="L" Command="{Binding ShowListCommand, Mode=TwoWay}"/>-->
 
-            <RadioButton GroupName="groupA" Content="+" IsChecked="{Binding SelectedPanel, Converter={StaticResource ResourceKey=SelectedPanelConverter}, ConverterParameter=+}" Command="{Binding OpenAddClientPanelCommand, Mode=TwoWay}" Style="{StaticResource buttonstripe1}"/>
-            <RadioButton GroupName="groupA" Content="L" IsChecked="{Binding SelectedPanel, Converter={StaticResource ResourceKey=SelectedPanelConverter}, ConverterParameter=L}" Command="{Binding ShowListCommand, Mode=TwoWay}" Style="{StaticResource buttonstripe1}"/>
+            <RadioButton GroupName="groupA" Content="+" 
+                         IsChecked="{Binding SelectedPanel, Converter={StaticResource ResourceKey=SelectedPanelConverter}, ConverterParameter=+}" 
+                         Command="{Binding OpenAddClientPanelCommand, Mode=TwoWay}" Style="{StaticResource buttonstripe1}"/>
+            <RadioButton GroupName="groupA" Content="L" 
+                         IsChecked="{Binding SelectedPanel, Converter={StaticResource ResourceKey=SelectedPanelConverter}, ConverterParameter=L}" 
+                         Command="{Binding ShowListCommand, Mode=TwoWay}" Style="{StaticResource buttonstripe1}"/>
         </StackPanel>
 
         <ListView  Grid.Row="0" Grid.Column="1" Margin="5" Name="ClientsListView"
@@ -141,8 +145,8 @@
                    <!--SelectedItem="{Binding SelectedClient, Mode=TwoWay}"-->
 
         <Grid Grid.Column="1" 
-              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="LightGray">
-              <!--Visibility="{Binding EditionPanelVisibility, Mode=TwoWay}"--> 
+              Visibility="{Binding EditionPanelVisibility, Mode=TwoWay}" 
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.20*"/>
                 <RowDefinition Height="0.20*"/>
