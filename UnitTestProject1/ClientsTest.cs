@@ -14,7 +14,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void BusinessClientTest()
         {
-            BusinessClient client = new BusinessClient("firma", "miasto");
+            BusinessClient client = new BusinessClient(1,"firma", "państwo", "miasto", "ulica", "numer", "telefon", "mail");
 
             Assert.IsTrue(client.IsBusinessClient);
         }
@@ -22,7 +22,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void IndividualClientTest()
         {
-            IndividualClient client = new IndividualClient("firma", "miasto");
+            IndividualClient client = new IndividualClient(1,"firma", "państwo", "miasto", "ulica", "numer", "telefon", "mail");
 
             Assert.IsFalse(client.IsBusinessClient);
         }

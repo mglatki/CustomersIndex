@@ -1,0 +1,11 @@
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\CustomersIndex.exe
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\Prism.dll
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\System.Data.SQLite.dll
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\CustomersIndex.pdb
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\Prism.xml
+C:\Repozytoria\CustomersIndex\UnitTestProject1\bin\Debug\System.Data.SQLite.xml
+C:\Repozytoria\CustomersIndex\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Repozytoria\CustomersIndex\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Repozytoria\CustomersIndex\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
