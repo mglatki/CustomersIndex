@@ -89,12 +89,39 @@ namespace CustomersIndex.Utilities
 
         public static async Task AddClientAsync(string name, string adr_country, string adr_city, string adr_street, string adr_str_numb, string cont_phone, string cont_email, byte buss_client)
         {
-            string txtSQLQuery = "INSERT INTO clients (name, adr_country, adr_city, adr_street, adr_str_numb, cont_phone, cont_email, buss_client) VALUES ('" +
-                name + "','" + adr_country + "','" + adr_city + "','" + adr_street + "','" + adr_str_numb + "','" + cont_phone + "','" + cont_email + "','" + buss_client + "')";
+            sql_com = new SQLiteCommand(@"INSERT INTO clients (name, adr_country, adr_city, adr_street, adr_str_numb, cont_phone, cont_email, buss_client) 
+            VALUES (@name, @adr_country, @adr_city, @adr_street, @adr_str_numb, @cont_phone, @cont_email, @buss_client)");
+
+            sql_com.Parameters.Add("@name", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_country", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_city", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_street", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_str_numb", System.Data.DbType.String);
+            sql_com.Parameters.Add("@cont_phone", System.Data.DbType.String);
+            sql_com.Parameters.Add("@cont_email", System.Data.DbType.String);
+            sql_com.Parameters.Add("@buss_client", System.Data.DbType.Int16);
+
+            sql_com.Parameters["@name"].Value = name;
+            sql_com.Parameters["@adr_country"].Value = adr_country;
+            sql_com.Parameters["@adr_city"].Value = adr_city;
+            sql_com.Parameters["@adr_street"].Value = adr_street;
+            sql_com.Parameters["@adr_str_numb"].Value = adr_str_numb;
+            sql_com.Parameters["@cont_phone"].Value = cont_phone;
+            sql_com.Parameters["@cont_email"].Value = cont_email;
+            sql_com.Parameters["@buss_client"].Value = buss_client;
+
             try
             {
-                await ExecuteQuery(txtSQLQuery);
+                SetConnection();
+                sql_com.Connection = sql_con;
+                sql_com.Connection.Open();
+                await sql_com.ExecuteNonQueryAsync();
+                sql_com.Connection.Close();
 
+            }
+            catch(SQLiteException sql_e)
+            {
+                throw;
             }
             catch (Exception e)
             {
@@ -105,15 +132,70 @@ namespace CustomersIndex.Utilities
 
         public static async Task UpdateClientAsync(int id, string name, string adr_country, string adr_city, string adr_street, string adr_str_numb, string cont_phone, string cont_email, byte buss_client)
         {
-            string txtSQLQuery = String.Format("UPDATE clients SET name = {0}, adr_country = {1}, adr_city = {2}, adr_street = {3}, adr_str_numb = {4}, cont_phone = {5}, cont_email = {6}, buss_client = {7} WHERE client_id = {8}",
-                name, adr_country, adr_city, adr_street, adr_str_numb, cont_phone, cont_email, buss_client, id);
-            ExecuteQuery(txtSQLQuery);
+            sql_com = new SQLiteCommand(@"UPDATE clients SET name = @name, adr_country = @adr_country, adr_city = @adr_city, adr_street = @adr_street, 
+adr_str_numb = @adr_str_numb, cont_phone = @cont_phone, cont_email = @cont_email, buss_client = @buss_client WHERE client_id =  @client_id;");
+
+            sql_com.Parameters.Add("@name", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_country", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_city", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_street", System.Data.DbType.String);
+            sql_com.Parameters.Add("@adr_str_numb", System.Data.DbType.String);
+            sql_com.Parameters.Add("@cont_phone", System.Data.DbType.String);
+            sql_com.Parameters.Add("@cont_email", System.Data.DbType.String);
+            sql_com.Parameters.Add("@buss_client", System.Data.DbType.Int16);
+            sql_com.Parameters.Add("@client_id", System.Data.DbType.Int64);
+
+            sql_com.Parameters["@name"].Value = name;
+            sql_com.Parameters["@adr_country"].Value = adr_country;
+            sql_com.Parameters["@adr_city"].Value = adr_city;
+            sql_com.Parameters["@adr_street"].Value = adr_street;
+            sql_com.Parameters["@adr_str_numb"].Value = adr_str_numb;
+            sql_com.Parameters["@cont_phone"].Value = cont_phone;
+            sql_com.Parameters["@cont_email"].Value = cont_email;
+            sql_com.Parameters["@buss_client"].Value = buss_client;
+            sql_com.Parameters["@client_id"].Value = id;
+
+            try
+            {
+                SetConnection();
+                sql_com.Connection = sql_con;
+                sql_com.Connection.Open();
+                await sql_com.ExecuteNonQueryAsync();
+                sql_com.Connection.Close();
+            }
+            catch (SQLiteException sql_e)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         public static async Task DeleteClientAsync(int clientId)
         {
-            string txtSQLQuery = "DELETE FROM clients WHERE client_id = '" + clientId.ToString() + "'";
-            ExecuteQuery(txtSQLQuery);
+            sql_com = new SQLiteCommand(@"DELETE FROM clients WHERE client_id = @client_id");
+
+            sql_com.Parameters.Add("@client_id", System.Data.DbType.Int64);
+
+            sql_com.Parameters["@client_id"].Value = clientId;
+            
+            try
+            {
+                sql_com.Connection = sql_con;
+                sql_com.Connection.Open();
+                await sql_com.ExecuteNonQueryAsync();
+                sql_com.Connection.Close();
+            }
+            catch(SQLiteException sql_e)
+            {
+                throw;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 }

@@ -229,7 +229,11 @@ namespace CustomersIndex.ViewModels
             ClientCountry = "";
             ClientStreet = "";
             ClientStreetNumber = "";
+            ClientsEmailAdres = "";
+            ClientsPhoneNumber = "";
             IsBussinessClientChecked = false;
+
+            IsEditMode = false;
         }
         #endregion
 
