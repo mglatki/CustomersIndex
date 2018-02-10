@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace CustomersIndex.Utilities
 {
@@ -121,12 +122,21 @@ namespace CustomersIndex.Utilities
             }
             catch(SQLiteException sql_e)
             {
-                throw;
+                string errorMessage = "Message: " + sql_e.Message + "\n" +
+                        "Error Code: " + sql_e.ErrorCode + "\n" +
+                        "Source: " + sql_e.Source + "\n" +
+                        "Data: " + sql_e.Data + "\n";
+
+                MessageBox.Show(errorMessage, "SQLite exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception e)
             {
 
-                throw;
+                string errorMessage = "Message: " + e.Message + "\n" +
+                        "Source: " + e.Source + "\n" +
+                        "Data: " + e.Data + "\n";
+
+                MessageBox.Show(errorMessage, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -165,11 +175,21 @@ adr_str_numb = @adr_str_numb, cont_phone = @cont_phone, cont_email = @cont_email
             }
             catch (SQLiteException sql_e)
             {
-                throw;
+                string errorMessage = "Message: " + sql_e.Message + "\n" +
+                        "Error Code: " + sql_e.ErrorCode + "\n" +
+                        "Source: " + sql_e.Source + "\n" +
+                        "Data: " + sql_e.Data + "\n";
+
+                MessageBox.Show(errorMessage, "SQLite exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception e)
             {
-                throw;
+
+                string errorMessage = "Message: " + e.Message + "\n" +
+                        "Source: " + e.Source + "\n" +
+                        "Data: " + e.Data + "\n";
+
+                MessageBox.Show(errorMessage, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
